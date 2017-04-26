@@ -1,0 +1,402 @@
+Current configuration : 10041 bytes
+!
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname ka-as1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+username patrick privilege 15 password 0 patrick
+username anouk privilege 15 password 0 anouk
+username willem privilege 15 password 0 willem
+!
+!
+aaa new-model
+!
+!
+aaa authentication login default local
+aaa authentication enable default none
+!
+!
+!
+aaa session-id common
+switch 2 provision ws-c3750g-24ps
+system mtu routing 1500
+ip domain-name an3grp2.nl
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+!
+!         
+!
+interface Port-channel1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 2-4094
+ switchport mode trunk
+!
+interface GigabitEthernet2/0/1
+ switchport access vlan 3
+ switchport port-security maximum 3
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/2
+ description leeg
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 3
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/3
+ description leeg
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 3
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/4
+ description leeg
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 3
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/5
+ description leeg
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 3
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/6
+ description leeg
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 3
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/7
+ description leeg
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 3
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/8
+ description leeg
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 3
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/9
+ description leeg
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 3
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/10
+ description leeg
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 3
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown 
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/11
+ description leeg
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 3
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/12
+ description leeg
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 3
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/13
+ description leeg
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 3
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/14
+ description leeg
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 3
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/15
+ description leeg
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 3
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/16
+ description leeg
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 3
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/17
+ description leeg
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 3
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/18
+ description leeg
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 3
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!         
+interface GigabitEthernet2/0/19
+ description leeg
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 3
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/20
+ description leeg
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 3
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/21
+ description leeg
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 3
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/22
+ description leeg
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 3
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/23
+ description ka-ds1-onder
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 2-4094
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface GigabitEthernet2/0/24
+ description ka-ds1-boven
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 2-4094
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface GigabitEthernet2/0/25
+!
+interface GigabitEthernet2/0/26
+!
+interface GigabitEthernet2/0/27
+!
+interface GigabitEthernet2/0/28
+!
+interface Vlan1
+ no ip address
+!
+interface Vlan3
+ description staff
+ no ip address
+!
+interface Vlan99
+ description management
+ ip address 10.10.99.4 255.255.255.0
+!
+ip classless
+ip http server
+ip http secure-server
+!
+!
+!
+snmp-server community public RW
+!
+!
+line con 0
+line vty 5 15
+ transport input ssh
+!
+end
