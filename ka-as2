@@ -1,0 +1,55 @@
+!Current Configuration:
+!System Description "PowerConnect 6224, 3.3.1.10, VxWorks 6.5"
+!System Software Version 3.3.1.10
+!Cut-through mode is configured as disabled
+!
+configure
+vlan database
+vlan 2,99
+vlan routing 99 1
+exit
+stack
+member 1 1
+exit
+ip address none
+ip routing
+interface vlan 99
+name "Management"
+routing
+ip address 10.10.99.99 255.255.255.0
+exit
+username "anouk" password dfc0d0894c8152e7ab89a2842ed831bf level 1 encrypted
+username "willem" password 7c5208e1505264e2d0dcb83e707a5a55 level 1 encrypted
+username "patrick" password 217ce576c74f4a42dbf99de3c432afed level 1 encrypted
+aaa authentication login "defaultList" line
+aaa authentication enable "enableList" line
+line ssh
+password dfc0d0894c8152e7ab89a2842ed831bf encrypted
+exit
+!
+interface ethernet 1/g1
+description 'patrick'
+switchport access vlan 2
+exit
+!
+interface ethernet 1/g2
+switchport mode general
+switchport general pvid 99
+exit
+!
+interface ethernet 1/g23
+channel-group 2 mode auto
+description 'uplink ka-ds1-onder:2/0/21'
+exit
+!
+interface ethernet 1/g24
+channel-group 2 mode auto
+description 'uplink ka-ds1-boven:1/0/23'
+exit
+!
+interface port-channel 2
+switchport mode trunk
+switchport trunk allowed vlan add 2,99
+exit
+snmp-server community public rw
+exit
