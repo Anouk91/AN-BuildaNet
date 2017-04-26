@@ -1,0 +1,58 @@
+ls1-grp2@chico:ls1-grp2> show configuration 
+interfaces {
+    lt-0/0/0 {
+        unit 0 {
+            description LS1->LS2;
+            encapsulation ethernet;
+            peer-unit 1;
+            family inet {
+                address 10.10.254.9/30;
+            }
+            family iso;
+        }
+    }
+    ge-0/2/0 {
+        unit 0 {
+            description "uplink cs1-ls2:Ge-1/2/0";
+            family inet {
+                address 10.10.254.9/30;
+            }
+        }
+    }
+    ge-3/0/0 {
+        unit 1 {
+            vlan-id 1;
+            family inet {               
+                address 10.10.199.2/24 {
+                    vrrp-group 1 {
+                        virtual-address 10.10.199.1;
+                        accept-data;
+                    }
+                }
+            }
+        }
+    }
+    ge-4/3/4 {
+        unit 0 {
+            description "uplink ka-ds1-boven:Gi1/0/25";
+            family inet {
+                address 10.10.254.1/30;
+            }
+        }
+    }
+}
+protocols {
+    ospf {
+        area 0.0.0.0 {
+            interface ge-4/3/4.0;
+            interface lt-0/0/0.0;
+            interface ge-3/0/0.1 {
+                passive;
+            }
+            interface ge-0/2/0.0;
+        }
+    }
+}
+routing-options {
+    router-id 100.100.100.100;
+}

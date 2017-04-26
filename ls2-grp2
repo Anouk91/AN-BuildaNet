@@ -1,0 +1,99 @@
+ls2-grp2@chico:ls2-grp2> show configuration 
+interfaces {
+    lt-0/0/0 {
+        unit 1 {
+            description LS2->LS1;
+            encapsulation ethernet;
+            peer-unit 0;
+            family inet {
+                address 10.10.254.10/30;
+            }
+            family iso;
+        }
+    }
+    ge-1/2/0 {
+        unit 0 {
+            description "uplink cs1-ls1:Ge-0/2/0";
+            family inet {
+                address 10.10.254.10/30;
+            }
+        }
+    }
+    ge-2/0/0 {
+        unit 1 {
+            vlan-id 1;
+            family inet {
+                address 10.10.199.3/24 {
+                    vrrp-group 1 {
+                        virtual-address 10.10.199.1;
+                        accept-data;
+                    }
+                }
+            }
+        }
+    }
+    ge-4/0/0 {
+        unit 0 {
+            description BGP-link;
+            family inet {
+                address 192.168.100.2/24;
+            }
+        }
+    }
+    ge-4/3/5 {
+        unit 0 {
+            description "uplink ka-ds1-onder:Gi2/0/25";
+            family inet {
+                address 10.10.254.5/30;
+            }
+        }
+    }
+}                                       
+protocols {
+    bgp {
+        group NK {
+            type external;
+            export advertise-ospf;
+            peer-as 3;
+            neighbor 192.168.100.3;
+        }
+    }
+    ospf {
+        export [ import-bgp advertise-ospf ];
+        area 0.0.0.0 {
+            interface ge-4/3/5.0;
+            interface lt-0/0/0.0;
+            interface ge-2/0/0.1 {
+                passive;
+            }
+            interface ge-1/2/0.0;
+        }
+    }
+}
+policy-options {
+    policy-statement advertise-ospf {
+        term 1 {
+            from protocol [ direct ospf bgp ];
+            then accept;
+        }
+    }
+    policy-statement import-bgp {
+        term 1 {
+            from protocol bgp;
+            then {
+                next-hop self;
+                accept;
+            }
+        }
+    }
+    policy-statement send-direct {
+        term 1 {
+            from protocol direct;
+            then accept;
+        }
+    }
+}
+routing-options {
+    router-id 200.200.200.200;
+    autonomous-system 2;
+}
